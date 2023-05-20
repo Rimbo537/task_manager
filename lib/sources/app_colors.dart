@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const transparent = Colors.transparent;
-  static const bgTop = Color(0xFFA9A9A9);
-  static const bgBottom = Color(0xFFA9A9A9);
-  static const mainButtonColor = Color(0xFFFFD600);
-  static const activeCategoryColor = Color(0xFFFBEFB4);
-  static const inactiveCategoryColor = Color(0xFFDBDBDB);
+  static const secondary = Color(0xFFA9A9A9);
+  static const secondaryVariant = Color(0xFF383838);
+  static const primary = Color(0xFFDBDBDB);
+  static const primaryVariant = Color(0xFFFFD600);
+  static const disabled = Color(0xFFFBEFB4);
+  static const accentRed = Color(0xFFFF8989);
 }
