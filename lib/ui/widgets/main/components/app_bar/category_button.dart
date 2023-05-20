@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/sources/app_colors.dart';
 
 class CategoryButton extends StatelessWidget {
   final String text;
@@ -23,8 +24,9 @@ class CategoryButton extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25),
             ),
-            backgroundColor:
-                isActive ? const Color(0xFFFBEFB4) : const Color(0xFFDBDBDB),
+            backgroundColor: isActive
+                ? AppColors.activeCategoryColor
+                : AppColors.inactiveCategoryColor,
             padding: const EdgeInsets.symmetric(vertical: 14),
           ),
           onPressed: onPressed,

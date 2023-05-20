@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/sources/app_colors.dart';
 import 'package:task_manager/ui/widgets/main/components/app_bar/custom_app_bar.dart';
 import 'package:task_manager/ui/widgets/main/main.dart';
 
@@ -8,13 +9,13 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.transparent,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.transparent,
         elevation: 0,
-        title: CustomAppBar(),
+        title: const CustomAppBar(),
       ),
-      body: MainWidget(),
+      body: const MainWidget(),
     );
   }
 }
