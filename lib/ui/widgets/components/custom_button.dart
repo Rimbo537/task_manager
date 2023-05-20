@@ -26,13 +26,13 @@ class CustomButton extends StatelessWidget {
           backgroundColor: bgColor ?? const Color(0xFFFFD600),
           padding: padding ??
               const EdgeInsets.symmetric(horizontal: 30, vertical: 10)),
+      onPressed: onPressed,
       child: child ??
           Text(
             text,
             style: const TextStyle(
                 color: Colors.black, fontSize: 24, fontWeight: FontWeight.w500),
           ),
-      onPressed: () {},
     );
   }
 }

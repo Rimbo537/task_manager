@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/ui/screens/log_in/log_in.dart';
+import 'package:task_manager/ui/screens/main/main.dart';
 import 'package:task_manager/ui/widgets/components/bg_widget.dart';
 
 void main() {
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const BackgroundWidget(
-        child: LogInScreen(),
+        child: MainScreen(),
+        // LogInScreen(),
       ),
     );
   }
