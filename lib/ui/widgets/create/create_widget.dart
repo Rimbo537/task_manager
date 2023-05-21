@@ -11,7 +11,16 @@ import 'package:task_manager/ui/widgets/create/components/image_picker.dart';
 import 'package:task_manager/ui/widgets/create/components/task_picker.dart';
 
 class CreateWidget extends StatefulWidget {
-  const CreateWidget({super.key});
+  final VoidCallback onPressed;
+  final String textButton;
+  final Color? colorButton;
+
+  const CreateWidget({
+    super.key,
+    required this.onPressed,
+    required this.textButton,
+    this.colorButton,
+  });
 
   @override
   State<CreateWidget> createState() => _CreateWidgetState();
@@ -23,11 +32,7 @@ class _CreateWidgetState extends State<CreateWidget> {
   File? imageFile;
   bool isClearImage = false;
 
-  // TODO:
-  // Image picker
-  // макс описание , кол-во строк
-
-  // след екран
+  TextEditingController descriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +42,13 @@ class _CreateWidgetState extends State<CreateWidget> {
           const BasicContainer(
             child: TaskPicker(),
           ),
-          const BasicContainer(
+          BasicContainer(
             height: 100,
             child: CustomTextField(
               hintText: 'Додати опис...',
               fontSize: 18,
               maxLines: 3,
+              controller: descriptionController,
             ),
           ),
           BasicContainer(
@@ -80,7 +86,8 @@ class _CreateWidgetState extends State<CreateWidget> {
             padding: const EdgeInsets.symmetric(vertical: 12),
             child: CustomButton(
               onPressed: () {},
-              text: 'Створити',
+              text: widget.textButton,
+              bgColor: widget.colorButton,
             ),
           )
         ],
