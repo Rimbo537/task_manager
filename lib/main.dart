@@ -30,10 +30,10 @@ class MyApp extends StatelessWidget {
       title: 'Task Manager',
       theme: ThemeData(primarySwatch: customColor),
       home: const BackgroundWidget(
-        child: 
-        // CreateScreen(),
-         MainScreen(),
-        // LogInScreen(),
+        child:
+            // CreateScreen(),
+            //  MainScreen(),
+            LogInScreen(),
       ),
     );
   }

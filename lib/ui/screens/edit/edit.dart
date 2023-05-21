@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/sources/app_colors.dart';
 import 'package:task_manager/ui/widgets/components/bg_widget.dart';
-import 'package:task_manager/ui/widgets/create/components/custom_text_field.dart';
+import 'package:task_manager/ui/widgets/edit/components/app_bar.dart';
 import 'package:task_manager/ui/widgets/edit/edit_widget.dart';
 
 class EditScreen extends StatelessWidget {
@@ -9,8 +9,6 @@ class EditScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController nameController = TextEditingController();
-
     return BackgroundWidget(
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
@@ -19,12 +17,7 @@ class EditScreen extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: AppColors.transparent,
             elevation: 0,
-            title: CustomTextField(
-              hintText: 'Назва завдання...',
-              fontSize: 24,
-              maxLength: 90,
-              controller: nameController,
-            ),
+            title: const EditAppBarWidget(),
           ),
           body: EditWidget(
             textButton: 'Видалити',
