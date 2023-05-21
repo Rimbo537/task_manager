@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:task_manager/sources/app_colors.dart';
 import 'package:task_manager/ui/widgets/components/custom_button.dart';
 import 'package:task_manager/ui/widgets/main/components/app_bar/custom_app_bar.dart';
-import 'package:task_manager/ui/widgets/main/main.dart';
+import 'package:task_manager/ui/widgets/main/main_widget.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});

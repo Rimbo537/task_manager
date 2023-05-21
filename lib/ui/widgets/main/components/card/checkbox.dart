@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/sources/app_colors.dart';
 
-class SelectedWidget extends StatelessWidget {
+class CheckboxWidget extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onTap;
 
-  const SelectedWidget({
+  const CheckboxWidget({
     super.key,
     required this.isSelected,
     required this.onTap,
   });
-
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +22,7 @@ class SelectedWidget extends StatelessWidget {
           color: Colors.black,
           width: 1.0,
         ),
-        color: isSelected
-            ? AppColors.primaryVariant
-            : AppColors.transparent,
+        color: isSelected ? AppColors.primaryVariant : AppColors.transparent,
       ),
       child: GestureDetector(
         onTap: onTap,

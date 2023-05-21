@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/sources/app_colors.dart';
-import 'package:task_manager/ui/widgets/main/components/card/select_widdget.dart';
+import 'package:task_manager/ui/widgets/main/components/card/checkbox.dart';
 
 class CardWidget extends StatefulWidget {
   const CardWidget({super.key});
@@ -53,7 +53,7 @@ class _CardWidgetState extends State<CardWidget> {
                 ),
               ),
             ),
-            SelectedWidget(
+            CheckboxWidget(
               isSelected: isSelected,
               onTap: () {
                 print('asdasdasd');
