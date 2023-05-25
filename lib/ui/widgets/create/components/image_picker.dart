@@ -61,7 +61,7 @@ class _InputImage extends StatelessWidget {
             ),
             IconButton(
                 onPressed: clearImage,
-                icon: Icon(
+                icon: const Icon(
                   Icons.close,
                   size: 26,
                 ))

@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/domain/models/data_model.dart';
 import 'package:task_manager/sources/app_colors.dart';
-import 'package:task_manager/ui/screens/create/create.dart';
 import 'package:task_manager/ui/screens/edit/edit.dart';
 import 'package:task_manager/ui/widgets/main/components/card/checkbox.dart';
 
 class CardWidget extends StatefulWidget {
-  const CardWidget({super.key});
+  final TaskModel model;
+
+  const CardWidget({
+    super.key,
+    required this.model,
+  });
 
   @override
   State<CardWidget> createState() => _CardWidgetState();
@@ -18,13 +23,18 @@ class _CardWidgetState extends State<CardWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const EditScreen()));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => EditScreen(
+                  model: widget.model,
+                )));
+        print(widget.model.urgent);
       },
       child: Container(
         height: 65,
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.accentRed : AppColors.primary,
+          color: widget.model.urgent == 1
+              ? AppColors.accentRed
+              : AppColors.primary,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Padding(
@@ -33,7 +43,9 @@ class _CardWidgetState extends State<CardWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Icon(
-                isSelected ? Icons.work_outline : Icons.home_outlined,
+                widget.model.type == 1
+                    ? Icons.work_outline
+                    : Icons.home_outlined,
                 size: 16,
               ),
               Expanded(
@@ -42,16 +54,18 @@ class _CardWidgetState extends State<CardWidget> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
+                    children: [
                       Text(
-                        'Намалювати головну сторінку цієї програми',
+                        widget.model.name.isNotEmpty
+                            ? widget.model.name
+                            : 'Назва завдання',
                         style: TextStyle(fontSize: 16),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(height: 3),
                       Text(
-                        '02.02.2023',
+                        widget.model.finishDate ?? 'some data',
                         style: TextStyle(fontSize: 11),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -61,9 +75,8 @@ class _CardWidgetState extends State<CardWidget> {
                 ),
               ),
               CheckboxWidget(
-                isSelected: isSelected,
+                isSelected: widget.model.status == 1 ? isSelected : !isSelected,
                 onTap: () {
-                  print('asdasdasd');
                   setState(() {
                     isSelected = !isSelected;
                   });

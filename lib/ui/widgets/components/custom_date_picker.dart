@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:task_manager/ui/widgets/components/basic_container.dart';
-import 'package:date_time_picker/date_time_picker.dart';
 
 class CustomDatePicker extends StatefulWidget {
-  const CustomDatePicker({super.key});
+  final String? date;
+  const CustomDatePicker({super.key, this.date});
 
   @override
   State<CustomDatePicker> createState() => _CustomDatePickerState();
@@ -12,6 +12,14 @@ class CustomDatePicker extends StatefulWidget {
 
 class _CustomDatePickerState extends State<CustomDatePicker> {
   DateTime? _selectedDate;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.date != 'null') {
+      _selectedDate = DateTime.parse(widget.date.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

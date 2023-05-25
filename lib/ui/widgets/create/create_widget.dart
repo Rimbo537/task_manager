@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:task_manager/domain/models/data_model.dart';
 import 'package:task_manager/ui/widgets/components/basic_container.dart';
 import 'package:task_manager/ui/widgets/components/custom_button.dart';
 import 'package:task_manager/ui/widgets/components/custom_date_picker.dart';
@@ -14,12 +15,14 @@ class CreateWidget extends StatefulWidget {
   final VoidCallback onPressed;
   final String textButton;
   final Color? colorButton;
+  final TaskModel? model;
 
   const CreateWidget({
     super.key,
     required this.onPressed,
     required this.textButton,
     this.colorButton,
+    this.model,
   });
 
   @override
@@ -32,15 +35,18 @@ class _CreateWidgetState extends State<CreateWidget> {
   File? imageFile;
   bool isClearImage = false;
 
-  TextEditingController descriptionController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    TextEditingController descriptionController =
+        TextEditingController(text: widget.model?.description ?? '');
+
     return SingleChildScrollView(
       child: Column(
         children: [
-          const BasicContainer(
-            child: TaskPicker(),
+          BasicContainer(
+            child: TaskPicker(
+              model: widget.model,
+            ),
           ),
           BasicContainer(
             height: 100,
@@ -70,7 +76,9 @@ class _CreateWidgetState extends State<CreateWidget> {
               },
             ),
           ),
-          const CustomDatePicker(),
+          CustomDatePicker(
+            date: '${widget.model?.finishDate}',
+          ),
           BasicContainer(
             child: TypeOfTaskWidget(
               text: 'Термінове',
@@ -79,7 +87,7 @@ class _CreateWidgetState extends State<CreateWidget> {
                   isSelected = !isSelected;
                 });
               },
-              isSelected: isSelected,
+              isSelected: widget.model?.urgent == 0 ? isSelected : !isSelected,
             ),
           ),
           Padding(
